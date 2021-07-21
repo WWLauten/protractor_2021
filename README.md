@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ProtractorTest
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
@@ -25,3 +26,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+=======
+# protractor_2021
+>>>>>>> b2be6d239f3c55d221a4f82cb3eef57c1f4a2037
