@@ -1,17 +1,20 @@
 // 'browser' é a "casquinha" do Protractror sobre o Selenium.
 import { browser} from 'protractor'; 
 import { HomePage } from './home.po';
+import { PhotoDetailPage } from './photo-detail.po';
 describe('Home Page', () => {
 
     let homePage: HomePage;
+    let photoDetailPage: PhotoDetailPage;
     beforeEach(async () => {
         homePage = new HomePage();
+        photoDetailPage = new PhotoDetailPage();
         await homePage.navigateTo();
     });
 
     it('Should navigate to user profile', async () => {
         const title = await homePage.getWindowTitle();
-        expect(title).toEqual('Timeline');
+        expect(title).toEqual(HomePage.PAGE_TITLE);
     });
 
     it('Should display a list of photos', async () => {
@@ -21,8 +24,8 @@ describe('Home Page', () => {
 
     it('Should navigate to photo detail when photo navigation is triggered', async () => {
         await homePage.clickOnFirstItemFromPhotoList();
-        const title = await browser.getTitle();
-        expect(title).toBe('Photo detail');
+        const title = await photoDetailPage.getWindowTitle();
+        expect(title).toBe(PhotoDetailPage.PAGE_TITLE);
     });
 
     it('Should list one item when filtering by word "farol"', async () => {
