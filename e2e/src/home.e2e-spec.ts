@@ -1,5 +1,5 @@
 // 'browser' é a "casquinha" do Protractror sobre o Selenium.
-import { browser, element, by, protractor } from 'protractor'; 
+import { browser} from 'protractor'; 
 import { HomePage } from './home.po';
 describe('Home Page', () => {
 
@@ -15,41 +15,19 @@ describe('Home Page', () => {
     });
 
     it('Should display a list of photos', async () => {
-        // retorna a lista com todas as fotos dentro da lista ap-photos.
-        // count retorna uma promise para que possa esperar o Angular renderizar os elementos.
-        const photoListSize = await element
-            .all(by.css('.photo'))
-            .count();
-        // posso ao invés de usar toBe(3) tornar mais flexível o teste com toBeGreaterThan(0).
+        const photoListSize = await homePage.getPhotoListSize();
         expect(photoListSize).toBeGreaterThan(0);
     });
 
     it('Should navigate to photo detail when photo navigation is triggered', async () => {
-        // se tentarmos o método click do wrapper firstElement que retorna uma promise,
-        // não vai funcionar, bug do Webdriver manager, então, vamos simular um ENTER.
-        // await firstElement.click();
-        /* Melhorando o código: 
-        const firstElement = element.all(by.css('.photo')).first();
-        await firstElement.sendKeys(protractor.Key.ENTER); */
-        await element
-            .all(by.css('.photo'))
-            .first()
-            .sendKeys(protractor.Key.ENTER);
+        await homePage.clickOnFirstItemFromPhotoList();
         const title = await browser.getTitle();
         expect(title).toBe('Photo detail');
     });
 
     it('Should list one item when filtering by word "farol"', async () => {
-        /* Melhorando o código:
-        const searchInput = element(by.css('ap-search input[type=search]'));
-        await searchInput.sendKeys('farol');
-        const list = element.all(by.css('.photo')); */
-        await element(by.css('ap-search input[type=search]'))
-            .sendKeys('farol')
-        const photoListSize = await element 
-            .all(by.css('.photo')) 
-            .count();
+        await homePage.fillSearchInputWith('farol');
+        const photoListSize = await homePage.getPhotoListSize();
         expect(photoListSize).toBe(1);
-
     });
 })
