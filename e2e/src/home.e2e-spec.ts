@@ -1,24 +1,22 @@
 // 'browser' é a "casquinha" do Protractror sobre o Selenium.
 import { browser, element, by, protractor } from 'protractor'; 
+import { HomePage } from './home.po';
 describe('Home Page', () => {
 
+    let homePage: HomePage;
     beforeEach(async () => {
-        await browser.get('${browser.baseUrl}/#/user/flavio');
+        homePage = new HomePage();
+        await homePage.navigateTo();
     });
 
     it('Should navigate to user profile', async () => {
-        const title = await browser.getTitle();
+        const title = await homePage.getWindowTitle();
         expect(title).toEqual('Timeline');
     });
 
     it('Should display a list of photos', async () => {
         // retorna a lista com todas as fotos dentro da lista ap-photos.
-        // const list = element.all(by.css('ap-photos ap-photo'));
-
-        // const list = element.all(by.css('.photo'));
-        // const photoListSize = await list.count(); Melhorando o código:
-
-        // count é uma promise para que possa esperar o Angular renderizar os elementos.
+        // count retorna uma promise para que possa esperar o Angular renderizar os elementos.
         const photoListSize = await element
             .all(by.css('.photo'))
             .count();
