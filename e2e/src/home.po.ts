@@ -1,4 +1,4 @@
-import { browser } from "protractor";
+import { browser, by, element, protractor } from "protractor";
 
 export class HomePage {
 
@@ -8,5 +8,28 @@ export class HomePage {
 
     getWindowTitle() {
         return browser.getTitle();
+    }
+
+    getPhotoListSize() {
+        // retorna a lista com todas as fotos dentro da lista ap-photos.
+        // count retorna uma promise para que possa esperar o Angular renderizar os elementos.
+        return element
+            .all(by.css('.photo'))
+            .count();
+    }
+
+    fillSearchInputWith(text: string) {
+        return element(by.css('ap-search input[type=search]'))
+        .sendKeys(text);
+    }
+
+    clickOnFirstItemFromPhotoList() {
+        // se tentarmos o método click do wrapper firstElement que retorna uma promise,
+        // não vai funcionar, bug do Webdriver manager, então, vamos simular um ENTER.
+        // await firstElement.click();
+        return element
+        .all(by.css('.photo'))
+        .first()
+        .sendKeys(protractor.Key.ENTER);
     }
 }
