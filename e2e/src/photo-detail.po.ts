@@ -6,7 +6,7 @@ export class PhotoDetailPage {
 
     navigateTo(id: number) {
         // quando vai usar o "$" para preenchimento, deve-se usar a crase "`" ao invés da aspa simples "'".
-        return browser.get(`${browser.baseUrl}/#/p/${id}`);
+        return browser.get(`${browser.baseUrl}#/p/${id}`);
     }
 
     getWindowTitle() {
