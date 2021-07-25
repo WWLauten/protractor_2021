@@ -4,6 +4,11 @@ export class PhotoDetailPage {
 
     static PAGE_TITLE = 'Photo detail';
 
+    navigateTo(id: number) {
+        // quando vai usar o "$" para preenchimento, deve-se usar a crase "`" ao invés da aspa simples "'".
+        return browser.get(`${browser.baseUrl}/#/p/${id}`);
+    }
+
     getWindowTitle() {
         return browser.getTitle();
     }
