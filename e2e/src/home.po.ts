@@ -5,7 +5,7 @@ export class HomePage {
     static PAGE_TITLE = 'Timeline';
 
     navigateTo() {
-        return browser.get('${browser.baseUrl}/#/user/flavio');
+        return browser.get(`${browser.baseUrl}#/user/flavio`);
     }
 
     getWindowTitle() {
