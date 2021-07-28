@@ -9,7 +9,7 @@ export class PhotoDetailPage {
         return browser.get(`${browser.baseUrl}#/p/${id}`);
     }
 
-    getWindowTitle() {
+    getTitle() {
         return browser.getTitle();
     }
 

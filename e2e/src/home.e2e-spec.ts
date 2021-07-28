@@ -21,7 +21,7 @@ describe('Home Page', () => {
     });
 
     it('Should navigate to user profile', async () => {
-        const title = await homePage.getWindowTitle();
+        const title = await homePage.getTitle();
         expect(title).toEqual(HomePage.PAGE_TITLE);
     });
 
@@ -32,7 +32,7 @@ describe('Home Page', () => {
 
     it('Should navigate to photo detail when photo navigation is triggered', async () => {
         await homePage.clickOnFirstItemFromPhotoList();
-        const title = await photoDetailPage.getWindowTitle();
+        const title = await photoDetailPage.getTitle();
         expect(title).toBe(PhotoDetailPage.PAGE_TITLE);
     });
 
