@@ -1,4 +1,5 @@
 import { browser, logging } from "protractor";
+import { HomePage } from "./home.po";
 import { SignInPage } from "./signin.po";
 import { SignUpPage } from "./signup.po";
 
@@ -6,6 +7,7 @@ describe('SignUp Page', () => {
 
     let signUpPage: SignUpPage = null;
     let signInPage: SignInPage = null;
+    let homePage: HomePage = null;
 
     afterEach(async () => {
         const logs = await browser.manage().logs().get(logging.Type.BROWSER);
@@ -17,11 +19,12 @@ describe('SignUp Page', () => {
     beforeEach(async () => {
         signUpPage = new SignUpPage();
         signInPage = new SignInPage();
+        homePage = new HomePage();
         await signUpPage.navigateTo();
     });
 
     it('Should be on Signup Page', async () => {
-        const title = await signUpPage.getWindowTitle();
+        const title = await signUpPage.getTitle();
         expect(title).toEqual(SignUpPage.PAGE_TITLE);
     });
 
@@ -34,8 +37,12 @@ describe('SignUp Page', () => {
         const password = '12345678';
         await signUpPage.fillUPasswordField(password);
         await signUpPage.register();
-        const title = await signInPage.getWindowTitle();
+        let title = await signInPage.getTitle();
         expect(title).toEqual(SignInPage.PAGE_TITLE);
+        await signInPage.fillUserNameField(userName);
+        await signInPage.fillPasswordField(password);
+        await signInPage.login();
+        title = await homePage.getTitle();
+        expect(title).toEqual(HomePage.PAGE_TITLE);
     });
-
 });

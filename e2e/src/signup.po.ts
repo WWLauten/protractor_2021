@@ -7,27 +7,27 @@ export class SignUpPage {
         return browser.get(`${browser.baseUrl}#/home/signup`);
     }
 
-    getWindowTitle() {
+    getTitle() {
         return browser.getTitle();
     }
 
     fillEmailField(text: string) {
-        return element(by.css('input[formcontrolname=email]'))
+        return element(by.css('input[formControlName=email]'))
             .sendKeys(text);
     }
 
     fillFullNameField(text: string) {
-        return element(by.css('input[formcontrolname=fullName]'))
+        return element(by.css('input[formControlName=fullName]'))
             .sendKeys(text);
     }
 
     fillUserNameField(text: string) {
-        return element(by.css('input[formcontrolname=userName]'))
+        return element(by.css('input[formControlName=userName]'))
             .sendKeys(text);
     }
 
     fillUPasswordField(text: string) {
-        return element(by.css('input[formcontrolname=password]'))
+        return element(by.css('input[formControlName=password]'))
             .sendKeys(text);
     }
 
