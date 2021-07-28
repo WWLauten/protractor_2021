@@ -18,7 +18,7 @@ describe('Photo Detail Page', () => {
     });
 
     it('Should be on photo detail page', async () => {
-        const title = await photoDetailPage.getWindowTitle();
+        const title = await photoDetailPage.getTitle();
         expect(title).toEqual(PhotoDetailPage.PAGE_TITLE);
     });
 
