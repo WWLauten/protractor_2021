@@ -18,6 +18,7 @@ exports.config = {
       args: ['--incognito']
     }
   },
+  chromeDriver: '../node_modules/protractor/node_modules/webdriver-manager/selenium/chromedriver_92.0.4515.43.exe',
   directConnect: true,
   SELENIUM_PROMISE_MANAGER: false,
   baseUrl: 'http://localhost:4200/',
