@@ -11,23 +11,8 @@ export class SignUpPage {
         return browser.getTitle();
     }
 
-    fillEmailField(text: string) {
-        return element(by.css('input[formControlName=email]'))
-            .sendKeys(text);
-    }
-
-    fillFullNameField(text: string) {
-        return element(by.css('input[formControlName=fullName]'))
-            .sendKeys(text);
-    }
-
-    fillUserNameField(text: string) {
-        return element(by.css('input[formControlName=userName]'))
-            .sendKeys(text);
-    }
-
-    fillUPasswordField(text: string) {
-        return element(by.css('input[formControlName=password]'))
+    fillField(formControlName: string, text: string) {
+        return element(by.css(`input[formControlName=${formControlName}]`))
             .sendKeys(text);
     }
 

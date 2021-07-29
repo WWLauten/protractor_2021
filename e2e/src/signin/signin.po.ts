@@ -7,13 +7,8 @@ export class SignInPage {
         return browser.getTitle();
     }
 
-    fillUserNameField(text: string) {
-        return element(by.css('input[formcontrolname=userName]'))
-            .sendKeys(text);
-    }
-
-    fillPasswordField(text: string) {
-        return element(by.css('input[formcontrolname=password]'))
+    fillField(formControlName: string, text: string) {
+        return element(by.css(`input[formControlName=${formControlName}]`))
             .sendKeys(text);
     }
     
