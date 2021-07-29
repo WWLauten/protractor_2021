@@ -27,7 +27,7 @@ export class PhotoUploadPage {
 
     selectImage() {
         const absolutePathImage = path.resolve(__dirname, image);
-        console.log(absolutePathImage);
+        //console.log(absolutePathImage);
         return element(by.css('input[formControlName=file]'))
             .sendKeys(absolutePathImage);
     }

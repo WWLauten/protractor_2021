@@ -4,7 +4,7 @@ import { browser, logging} from 'protractor';
 import { HomePage } from '../home/home.po';
 import { PhotoUploadPage } from './photo-upload.po';
 
-describe('Photo Upload Page', () => {
+describe('Home Page', () => {
 
     let homePage: HomePage;
     let photoUploadPage: PhotoUploadPage;
