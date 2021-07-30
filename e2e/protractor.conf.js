@@ -18,7 +18,7 @@ exports.config = {
       args: ['--incognito']
     }
   },
-  chromeDriver: '../node_modules/protractor/node_modules/webdriver-manager/selenium/chromedriver_92.0.4515.43.exe',
+  //chromeDriver: '../node_modules/protractor/node_modules/webdriver-manager/selenium/chromedriver_92.0.4515.43.exe',
   directConnect: true,
   SELENIUM_PROMISE_MANAGER: false,
   baseUrl: 'http://localhost:4200/',
@@ -37,6 +37,12 @@ exports.config = {
         displayStacktrace: StacktraceOption.PRETTY
       }
     }));
+
+    // @ts-ignore
+    by.addLocator('formControlName', (/** @type {any} */ control) => {
+      // variável de template entre crases "`" e usar uma interpolação "${}".
+      return document.querySelector(`[formcontrolname=${control}]`);
+    });
 
     // temos um browser implícito aqui.
     // @ts-ignore
@@ -59,7 +65,7 @@ exports.config = {
     // @ts-ignore
     return browser.driver.wait(() => {
       // @ts-ignore
-      return browser.driver.getCurrentUrl().then(url => {
+      return browser.driver.getCurrentUrl().then((/** @type {string} */ url) => {
         return /user/.test(url);
       });
     }, 10000);
